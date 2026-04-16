@@ -27,8 +27,6 @@ export default function LessonPage({
   }
 
   const nav = getLessonNavigation(id);
-  const currentModule = course.modules.find((m) => m.id === lesson.moduleId);
-  const moduleLessons = currentModule?.lessons ?? [];
 
   return (
     <div className="mx-auto max-w-7xl bg-dark-bg py-4 lg:px-6">
@@ -129,9 +127,9 @@ export default function LessonPage({
         <div className="w-full shrink-0 px-4 pb-8 sm:px-6 lg:w-[30%] lg:px-0">
           <div className="lg:sticky lg:top-[80px] lg:max-h-[calc(100vh-100px)]">
             <Sidebar
-              moduleName={lesson.moduleName}
-              lessons={moduleLessons}
+              modules={course.modules}
               currentLessonId={id}
+              currentModuleId={lesson.moduleId}
             />
           </div>
         </div>
@@ -140,59 +138,103 @@ export default function LessonPage({
   );
 }
 
-function Sidebar({
-  moduleName,
-  lessons,
+function ModuleSection({
+  mod,
   currentLessonId,
+  defaultOpen,
 }: {
-  moduleName: string;
-  lessons: { id: string; title: string; durationMinutes: number | null }[];
+  mod: { id: string; title: string; lessons: { id: string; title: string; durationMinutes: number | null }[] };
   currentLessonId: string;
+  defaultOpen: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  return (
+    <div className="border-b border-dark-border last:border-0">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between px-4 py-3 text-left"
+      >
+        <div>
+          <span className="text-sm font-semibold text-white">{mod.title}</span>
+          <span className="ml-2 text-xs text-neutral-500">{mod.lessons.length} aulas</span>
+        </div>
+        <ChevronDown
+          className={`h-4 w-4 shrink-0 text-neutral-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+      <div
+        className={`grid transition-[grid-template-rows] duration-200 ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+      >
+        <div className="overflow-hidden">
+          {mod.lessons.map((lesson, index) => {
+            const isCurrent = lesson.id === currentLessonId;
+            return (
+              <Link
+                key={lesson.id}
+                href={`/lessons/${lesson.id}`}
+                aria-current={isCurrent ? 'page' : undefined}
+                className={`relative flex min-h-[44px] items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
+                  isCurrent
+                    ? 'bg-dark-card text-white'
+                    : 'text-neutral-400 hover:bg-dark-surface hover:text-neutral-200'
+                }`}
+              >
+                {isCurrent && (
+                  <motion.div
+                    layoutId="activeLesson"
+                    className="absolute bottom-0 left-0 top-0 w-[2px] bg-primary"
+                  />
+                )}
+                <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center">
+                  {isCurrent ? (
+                    <Play className="h-4 w-4 fill-primary text-primary" />
+                  ) : (
+                    <Circle className="h-4 w-4 text-neutral-600" />
+                  )}
+                </span>
+                <span className="flex-1 truncate">
+                  <span className={isCurrent ? 'text-white' : 'text-neutral-500'}>
+                    {index + 1}.
+                  </span>{' '}
+                  {lesson.title}
+                </span>
+                {lesson.durationMinutes && (
+                  <span className="flex-shrink-0 text-xs text-neutral-500">
+                    {lesson.durationMinutes} min
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Sidebar({
+  modules,
+  currentLessonId,
+  currentModuleId,
+}: {
+  modules: { id: string; title: string; lessons: { id: string; title: string; durationMinutes: number | null }[] }[];
+  currentLessonId: string;
+  currentModuleId: string;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const availableModules = modules.filter((m) => m.lessons.length > 0);
 
-  const listContent = (
-    <div className="py-2">
-      {lessons.map((lesson, index) => {
-        const isCurrent = lesson.id === currentLessonId;
-        return (
-          <Link
-            key={lesson.id}
-            href={`/lessons/${lesson.id}`}
-            aria-current={isCurrent ? 'page' : undefined}
-            className={`relative flex min-h-[44px] items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
-              isCurrent
-                ? 'bg-dark-card text-white'
-                : 'text-neutral-400 hover:bg-dark-surface hover:text-neutral-200'
-            }`}
-          >
-            {isCurrent && (
-              <motion.div
-                layoutId="activeLesson"
-                className="absolute bottom-0 left-0 top-0 w-[2px] bg-primary"
-              />
-            )}
-            <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center">
-              {isCurrent ? (
-                <Play className="h-4 w-4 fill-primary text-primary" />
-              ) : (
-                <Circle className="h-4 w-4 text-neutral-600" />
-              )}
-            </span>
-            <span className="flex-1 truncate">
-              <span className={isCurrent ? 'text-white' : 'text-neutral-500'}>
-                {index + 1}.
-              </span>{' '}
-              {lesson.title}
-            </span>
-            {lesson.durationMinutes && (
-              <span className="flex-shrink-0 text-xs text-neutral-500">
-                {lesson.durationMinutes} min
-              </span>
-            )}
-          </Link>
-        );
-      })}
+  const content = (
+    <div className="scrollbar-dark overflow-y-auto">
+      {availableModules.map((mod) => (
+        <ModuleSection
+          key={mod.id}
+          mod={mod}
+          currentLessonId={currentLessonId}
+          defaultOpen={mod.id === currentModuleId}
+        />
+      ))}
     </div>
   );
 
@@ -200,19 +242,16 @@ function Sidebar({
     <>
       {/* Desktop */}
       <motion.nav
-        aria-label="Aulas do modulo"
+        aria-label="Conteudo do curso"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="hidden flex-col rounded-lg bg-dark-surface lg:flex"
+        className="hidden flex-col rounded-lg bg-dark-surface lg:flex lg:max-h-[calc(100vh-100px)]"
       >
         <div className="shrink-0 border-b border-dark-border p-4">
-          <h3 className="text-lg font-semibold text-white">{moduleName}</h3>
-          <div className="mt-1 text-xs text-neutral-400">
-            {lessons.length} aulas
-          </div>
+          <h3 className="text-lg font-semibold text-white">Conteudo do curso</h3>
         </div>
-        <div className="scrollbar-dark overflow-y-auto">{listContent}</div>
+        {content}
       </motion.nav>
 
       {/* Mobile */}
@@ -222,20 +261,16 @@ function Sidebar({
           className="flex w-full min-h-[44px] items-center justify-between rounded-lg bg-dark-surface px-4 py-3 text-sm text-white"
           aria-expanded={mobileOpen}
         >
-          <span>Aulas deste modulo ({lessons.length})</span>
+          <span>Conteudo do curso</span>
           <ChevronDown
-            className={`h-4 w-4 transition-transform duration-200 ${
-              mobileOpen ? 'rotate-180' : ''
-            }`}
+            className={`h-4 w-4 transition-transform duration-200 ${mobileOpen ? 'rotate-180' : ''}`}
           />
         </button>
         <div
-          className={`grid transition-[grid-template-rows] duration-200 ${
-            mobileOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-          }`}
+          className={`grid transition-[grid-template-rows] duration-200 ${mobileOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
         >
           <div className="overflow-hidden">
-            <nav className="rounded-b-lg bg-dark-surface">{listContent}</nav>
+            <nav className="rounded-b-lg bg-dark-surface">{content}</nav>
           </div>
         </div>
       </div>
