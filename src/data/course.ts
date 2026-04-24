@@ -29,15 +29,13 @@ export const course: Course = {
   title: "Desafio de 28 Dias de Calistenia Militar",
   description:
     "Transforme seu corpo em 28 dias com treinos militares de calistenia — sem academia, sem equipamentos, sem desculpas.\n\nEste desafio foi criado para quem quer resultados reais usando apenas o peso do próprio corpo. São 28 dias de treinos progressivos inspirados no condicionamento físico militar, projetados para queimar gordura, ganhar força funcional e construir disciplina de ação.",
-  bannerUrl:
-    "https://tlllkecmsvhdvdmjouer.supabase.co/storage/v1/object/public/banners/190f5e21-65ef-40d2-bee7-001fa2625aa8.jpg",
+  bannerUrl: "/images/banner-principal.png",
   modules: [
     {
       id: "475fa05e-5fda-41ca-9263-0afea3fc888c",
       title: "INTRODUÇÃO [IMPORTANTE, NÃO PULE!!!]",
       description: "",
-      bannerUrl:
-        "https://tlllkecmsvhdvdmjouer.supabase.co/storage/v1/object/public/banners/bd7e66d6-01f9-48e9-a99a-0e4fd9285c23.jpg",
+      bannerUrl: "/images/introducao.png",
       sortOrder: 0,
       lessons: [
         {
@@ -46,7 +44,23 @@ export const course: Course = {
           videoId: "CRmXMrdFg5s",
           sortOrder: 0,
           durationMinutes: 2,
-          description: "",
+          description: `**Desafio 28 Dias de Calistenia Militar — Aula de Boas-Vindas**
+
+Apresentação do desafio com Anderson Caristênic, atleta profissional de boxe, muay thai e calistenia, com participações em programas como Programa Silvio Santos e Esporte Fantástico.
+
+São 4 semanas de treino, com intensidade progressiva a cada semana. Você só precisa de 20 minutos por dia e a decisão de não desistir.
+
+Nesse primeiro desafio **não é necessário nenhum equipamento de academia**. O que você vai precisar:
+
+- Colchonete (ou um tapete da sua casa)
+- Cronômetro (pode ser o celular)
+- Garrafa de água
+- Piso que não seja escorregadio, para sua segurança
+- Uma cadeira (ou o degrau da escada)
+
+Em cada treino, Anderson ensina a forma padrão do exercício e também a versão adaptada, para que todos consigam acompanhar no seu nível.
+
+Descanse bem e se prepare para o primeiro treino!`,
           moduleId: "475fa05e-5fda-41ca-9263-0afea3fc888c",
           moduleName: "INTRODUÇÃO [IMPORTANTE, NÃO PULE!!!]",
         },
@@ -56,8 +70,7 @@ export const course: Course = {
       id: "fbf9477d-da4b-41f5-abbf-86a87a176cb6",
       title: "SEMANA 1",
       description: "",
-      bannerUrl:
-        "https://tlllkecmsvhdvdmjouer.supabase.co/storage/v1/object/public/banners/d6024726-9f07-42c8-a1e7-66e6398ab7cb.jpg",
+      bannerUrl: "/images/semana-1.png",
       sortOrder: 1,
       lessons: [
         {
@@ -136,8 +149,7 @@ export const course: Course = {
       id: "418fa7bb-74d9-48c8-a95d-960bcf48b621",
       title: "SEMANA 2",
       description: "",
-      bannerUrl:
-        "https://tlllkecmsvhdvdmjouer.supabase.co/storage/v1/object/public/banners/9274cb88-bb47-45bf-9e95-c4530e8034db.jpg",
+      bannerUrl: "/images/semana-2.png",
       sortOrder: 2,
       lessons: [
         {
@@ -171,9 +183,9 @@ export const course: Course = {
           moduleName: "SEMANA 2",
         },
         {
-          id: "e5f6a7b8-c9d0-1234-efab-345678901234",
+          id: "f6a7b8c9-d0e1-2345-fabc-456789012345",
           title: "DIA 11",
-          videoId: "0rtNDWpFb1Y",
+          videoId: "2OctPW4PER8",
           sortOrder: 3,
           durationMinutes: 20,
           description: "",
@@ -181,9 +193,9 @@ export const course: Course = {
           moduleName: "SEMANA 2",
         },
         {
-          id: "f6a7b8c9-d0e1-2345-fabc-456789012345",
+          id: "a7b8c9d0-e1f2-3456-abcd-567890123456",
           title: "DIA 12",
-          videoId: "2OctPW4PER8",
+          videoId: "grNt0gTVgCE",
           sortOrder: 4,
           durationMinutes: 20,
           description: "",
@@ -191,10 +203,20 @@ export const course: Course = {
           moduleName: "SEMANA 2",
         },
         {
-          id: "a7b8c9d0-e1f2-3456-abcd-567890123456",
+          id: "b8c9d0e1-f2a3-4567-bcde-678901234567",
           title: "DIA 13",
-          videoId: "grNt0gTVgCE",
+          videoId: "324oknThZm8",
           sortOrder: 5,
+          durationMinutes: 20,
+          description: "",
+          moduleId: "418fa7bb-74d9-48c8-a95d-960bcf48b621",
+          moduleName: "SEMANA 2",
+        },
+        {
+          id: "c9d0e1f2-a3b4-5678-cdef-789012345678",
+          title: "DIA 14",
+          videoId: "1oOMSFV2Jqw",
+          sortOrder: 6,
           durationMinutes: 20,
           description: "",
           moduleId: "418fa7bb-74d9-48c8-a95d-960bcf48b621",
@@ -206,17 +228,36 @@ export const course: Course = {
       id: "1a03dea3-aa3f-449c-9873-f5c6f8baaa87",
       title: "SEMANA 3",
       description: "",
-      bannerUrl:
-        "https://tlllkecmsvhdvdmjouer.supabase.co/storage/v1/object/public/banners/5feba461-543a-4926-b698-173791003ed0.jpg",
+      bannerUrl: "/images/semana-3.png",
       sortOrder: 3,
-      lessons: [],
+      lessons: [
+        {
+          id: "d0e1f2a3-b4c5-6789-defa-890123456789",
+          title: "DIA 15",
+          videoId: "Vw1ShKt_hdA",
+          sortOrder: 0,
+          durationMinutes: 20,
+          description: "",
+          moduleId: "1a03dea3-aa3f-449c-9873-f5c6f8baaa87",
+          moduleName: "SEMANA 3",
+        },
+        {
+          id: "e1f2a3b4-c5d6-7890-efab-901234567890",
+          title: "DIA 16",
+          videoId: "WWEDksnX7E0",
+          sortOrder: 1,
+          durationMinutes: 20,
+          description: "",
+          moduleId: "1a03dea3-aa3f-449c-9873-f5c6f8baaa87",
+          moduleName: "SEMANA 3",
+        },
+      ],
     },
     {
       id: "df8ea0b1-9374-42c3-b855-bb691e4286a0",
       title: "SEMANA 4",
       description: "",
-      bannerUrl:
-        "https://tlllkecmsvhdvdmjouer.supabase.co/storage/v1/object/public/banners/65dc98b1-2f41-4563-b974-1359917fa213.jpg",
+      bannerUrl: "/images/semana-4.png",
       sortOrder: 4,
       lessons: [],
     },

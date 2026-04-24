@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'motion/react';
 import { Play } from 'lucide-react';
 import { course, getAllLessons } from '@/data/course';
 import InstallAppButton from './components/InstallAppButton';
+import Patente from '@/components/Patente';
+import { STORAGE_KEYS, safeRead } from '@/lib/progress';
 
 const MODULE_GRADIENTS = [
   'from-[#2d1b69] to-[#1a0a3e]',
@@ -18,9 +20,16 @@ const MODULE_GRADIENTS = [
 
 export default function HomePage() {
   const [expanded, setExpanded] = useState(false);
+  const [completedCount, setCompletedCount] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const allLessons = getAllLessons();
   const firstLesson = allLessons[0];
+  const totalCount = allLessons.length;
+
+  useEffect(() => {
+    const done = safeRead<string[]>(STORAGE_KEYS.completed, []);
+    setCompletedCount(done.length);
+  }, []);
 
   return (
     <div className="pb-12">
@@ -120,7 +129,10 @@ export default function HomePage() {
       {/* Modules */}
       <section className="mt-10 px-4 sm:px-6 lg:px-16">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-[24px] font-semibold text-white mb-5">Modulos</h2>
+          <div className="mb-5 flex items-center justify-between gap-3">
+            <h2 className="text-[24px] font-semibold text-white">Modulos</h2>
+            <Patente completedCount={completedCount} totalCount={totalCount} compact />
+          </div>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
