@@ -46,7 +46,7 @@ export const course: Course = {
           durationMinutes: 2,
           description: `**Desafio 28 Dias de Calistenia Militar — Aula de Boas-Vindas**
 
-Apresentação do desafio com Anderson Caristênic, atleta profissional de boxe, muay thai e calistenia, com participações em programas como Programa Silvio Santos e Esporte Fantástico.
+Apresentação do desafio com Anderson Calisthenics, atleta profissional de boxe, muay thai e calistenia, com participações em programas como Programa Silvio Santos e Esporte Fantástico.
 
 São 4 semanas de treino, com intensidade progressiva a cada semana. Você só precisa de 20 minutos por dia e a decisão de não desistir.
 
