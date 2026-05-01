@@ -8,6 +8,7 @@ import { Play } from 'lucide-react';
 import { course, getAllLessons } from '@/data/course';
 import InstallAppButton from './components/InstallAppButton';
 import Patente from '@/components/Patente';
+import UpsellModal from '@/components/UpsellModal';
 import { STORAGE_KEYS, safeRead } from '@/lib/progress';
 
 const MODULE_GRADIENTS = [
@@ -33,6 +34,8 @@ export default function HomePage() {
 
   return (
     <div className="pb-12">
+      <UpsellModal />
+
       {/* Hero */}
       <section className="relative">
         <div className="relative aspect-[3/2] md:aspect-[16/9] xl:aspect-[21/9] w-full overflow-hidden bg-dark-bg">
