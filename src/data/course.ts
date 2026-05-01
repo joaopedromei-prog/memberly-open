@@ -29,13 +29,13 @@ export const course: Course = {
   title: "Desafio de 28 Dias de Calistenia Militar",
   description:
     "Transforme seu corpo em 28 dias com treinos militares de calistenia — sem academia, sem equipamentos, sem desculpas.\n\nEste desafio foi criado para quem quer resultados reais usando apenas o peso do próprio corpo. São 28 dias de treinos progressivos inspirados no condicionamento físico militar, projetados para queimar gordura, ganhar força funcional e construir disciplina de ação.",
-  bannerUrl: "/images/banner-principal.png",
+  bannerUrl: "/images/banner.webp",
   modules: [
     {
       id: "475fa05e-5fda-41ca-9263-0afea3fc888c",
       title: "INTRODUÇÃO [IMPORTANTE, NÃO PULE!!!]",
       description: "",
-      bannerUrl: "/images/introducao.png",
+      bannerUrl: "/images/introducao.webp",
       sortOrder: 0,
       lessons: [
         {
@@ -70,7 +70,7 @@ Descanse bem e se prepare para o primeiro treino!`,
       id: "fbf9477d-da4b-41f5-abbf-86a87a176cb6",
       title: "SEMANA 1",
       description: "",
-      bannerUrl: "/images/semana-1.png",
+      bannerUrl: "/images/semana-1.webp",
       sortOrder: 1,
       lessons: [
         {
@@ -149,7 +149,7 @@ Descanse bem e se prepare para o primeiro treino!`,
       id: "418fa7bb-74d9-48c8-a95d-960bcf48b621",
       title: "SEMANA 2",
       description: "",
-      bannerUrl: "/images/semana-2.png",
+      bannerUrl: "/images/semana-2.webp",
       sortOrder: 2,
       lessons: [
         {
@@ -228,7 +228,7 @@ Descanse bem e se prepare para o primeiro treino!`,
       id: "1a03dea3-aa3f-449c-9873-f5c6f8baaa87",
       title: "SEMANA 3",
       description: "",
-      bannerUrl: "/images/semana-3.png",
+      bannerUrl: "/images/semana-3.webp",
       sortOrder: 3,
       lessons: [
         {
@@ -287,7 +287,7 @@ Descanse bem e se prepare para o primeiro treino!`,
       id: "df8ea0b1-9374-42c3-b855-bb691e4286a0",
       title: "SEMANA 4",
       description: "",
-      bannerUrl: "/images/semana-4.png",
+      bannerUrl: "/images/semana-4.webp",
       sortOrder: 4,
       lessons: [],
     },
