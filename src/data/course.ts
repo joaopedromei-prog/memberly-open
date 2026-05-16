@@ -1,7 +1,8 @@
 export interface Lesson {
   id: string;
   title: string;
-  videoId: string;
+  videoId?: string;
+  pdfUrl?: string;
   sortOrder: number;
   durationMinutes: number | null;
   description: string;
@@ -379,6 +380,45 @@ Descanse bem e se prepare para o primeiro treino!`,
           description: "",
           moduleId: "df8ea0b1-9374-42c3-b855-bb691e4286a0",
           moduleName: "SEMANA 4",
+        },
+      ],
+    },
+    {
+      id: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
+      title: "BÔNUS",
+      description: "",
+      bannerUrl: "/images/bonus.png",
+      sortOrder: 5,
+      lessons: [
+        {
+          id: "e7f8a9b0-c1d2-3456-efab-bonus0001ebook",
+          title: "Protocolo: Braço de Guerra",
+          pdfUrl: "/ebooks/protocolo-braco-de-guerra.pdf",
+          sortOrder: 0,
+          durationMinutes: null,
+          description: "",
+          moduleId: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
+          moduleName: "BÔNUS",
+        },
+        {
+          id: "f8a9b0c1-d2e3-4567-fabc-bonus0002ebook",
+          title: "Bebida dos Fuzileiros",
+          pdfUrl: "/ebooks/bebida-dos-fuzileiros.pdf",
+          sortOrder: 1,
+          durationMinutes: null,
+          description: "",
+          moduleId: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
+          moduleName: "BÔNUS",
+        },
+        {
+          id: "a9b0c1d2-e3f4-5678-abcd-bonus0003ebook",
+          title: "Lista Negra: Dossiê",
+          pdfUrl: "/ebooks/lista-negra-dossie.pdf",
+          sortOrder: 2,
+          durationMinutes: null,
+          description: "",
+          moduleId: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
+          moduleName: "BÔNUS",
         },
       ],
     },

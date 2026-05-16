@@ -125,15 +125,37 @@ export default function LessonPage({
               </ol>
             </nav>
 
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-dark-card">
-              <iframe
-                src={`https://www.youtube.com/embed/${lesson.videoId}?rel=0&modestbranding=1`}
-                className="absolute inset-0 h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowFullScreen
-                title={lesson.title}
-              />
-            </div>
+            {lesson.pdfUrl ? (
+              <div className="rounded-lg border border-dark-border bg-dark-card overflow-hidden">
+                <iframe
+                  src={lesson.pdfUrl}
+                  className="block w-full h-[70vh] min-h-[480px] bg-white"
+                  title={lesson.title}
+                />
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-dark-border px-4 py-3">
+                  <span className="text-xs text-text-muted">
+                    Material em PDF · abre no navegador
+                  </span>
+                  <a
+                    href={lesson.pdfUrl}
+                    download
+                    className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-primary-hover"
+                  >
+                    Baixar PDF
+                  </a>
+                </div>
+              </div>
+            ) : lesson.videoId ? (
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-dark-card">
+                <iframe
+                  src={`https://www.youtube.com/embed/${lesson.videoId}?rel=0&modestbranding=1`}
+                  className="absolute inset-0 h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowFullScreen
+                  title={lesson.title}
+                />
+              </div>
+            ) : null}
 
             <h1 className="mt-6 text-[28px] font-bold leading-tight text-white md:text-[32px]">
               {lesson.title}
