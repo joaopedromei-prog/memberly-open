@@ -125,25 +125,28 @@ export default function LessonPage({
               </ol>
             </nav>
 
-            {lesson.pdfUrl ? (
-              <div className="rounded-lg border border-dark-border bg-dark-card overflow-hidden">
-                <iframe
-                  src={lesson.pdfUrl}
-                  className="block w-full h-[70vh] min-h-[480px] bg-white"
-                  title={lesson.title}
-                />
-                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-dark-border px-4 py-3">
-                  <span className="text-xs text-text-muted">
-                    Material em PDF · abre no navegador
-                  </span>
+            {lesson.pdfs && lesson.pdfs.length > 0 ? (
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {lesson.pdfs.map((pdf) => (
                   <a
-                    href={lesson.pdfUrl}
+                    key={pdf.url}
+                    href={pdf.url}
                     download
-                    className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-primary-hover"
+                    className="group flex items-center justify-between gap-4 rounded-lg border border-dark-border bg-dark-surface p-4 transition-colors hover:border-primary/60 hover:bg-dark-card"
                   >
-                    Baixar PDF
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-primary">
+                        E-book · PDF
+                      </div>
+                      <div className="mt-0.5 truncate text-base font-semibold text-white">
+                        {pdf.title}
+                      </div>
+                    </div>
+                    <span className="shrink-0 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-white transition-colors group-hover:bg-primary-hover">
+                      Baixar
+                    </span>
                   </a>
-                </div>
+                ))}
               </div>
             ) : lesson.videoId ? (
               <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-dark-card">
@@ -173,9 +176,11 @@ export default function LessonPage({
               </div>
             )}
 
-            <div className="mt-8">
-              <Timer />
-            </div>
+            {lesson.videoId && (
+              <div className="mt-8">
+                <Timer />
+              </div>
+            )}
 
             <div className="mt-8 flex flex-col gap-3 border-t border-dark-border pt-6 sm:flex-row sm:items-center">
               <button

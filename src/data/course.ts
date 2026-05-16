@@ -2,7 +2,7 @@ export interface Lesson {
   id: string;
   title: string;
   videoId?: string;
-  pdfUrl?: string;
+  pdfs?: { title: string; url: string }[];
   sortOrder: number;
   durationMinutes: number | null;
   description: string;
@@ -392,29 +392,22 @@ Descanse bem e se prepare para o primeiro treino!`,
       lessons: [
         {
           id: "e7f8a9b0-c1d2-3456-efab-bonus0001ebook",
-          title: "Protocolo: Braço de Guerra",
-          pdfUrl: "/ebooks/protocolo-braco-de-guerra.pdf",
+          title: "E-books Bônus",
+          pdfs: [
+            {
+              title: "Protocolo: Braço de Guerra",
+              url: "/ebooks/protocolo-braco-de-guerra.pdf",
+            },
+            {
+              title: "Bebida dos Fuzileiros",
+              url: "/ebooks/bebida-dos-fuzileiros.pdf",
+            },
+            {
+              title: "Lista Negra: Dossiê",
+              url: "/ebooks/lista-negra-dossie.pdf",
+            },
+          ],
           sortOrder: 0,
-          durationMinutes: null,
-          description: "",
-          moduleId: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
-          moduleName: "BÔNUS",
-        },
-        {
-          id: "f8a9b0c1-d2e3-4567-fabc-bonus0002ebook",
-          title: "Bebida dos Fuzileiros",
-          pdfUrl: "/ebooks/bebida-dos-fuzileiros.pdf",
-          sortOrder: 1,
-          durationMinutes: null,
-          description: "",
-          moduleId: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
-          moduleName: "BÔNUS",
-        },
-        {
-          id: "a9b0c1d2-e3f4-5678-abcd-bonus0003ebook",
-          title: "Lista Negra: Dossiê",
-          pdfUrl: "/ebooks/lista-negra-dossie.pdf",
-          sortOrder: 2,
           durationMinutes: null,
           description: "",
           moduleId: "b0d51e7c-9a4a-4dc7-9d2f-bonusmodule001",
