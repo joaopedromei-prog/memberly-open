@@ -36,6 +36,30 @@ export default function HomePage() {
     <div className="pb-12">
       <UpsellModal />
 
+      {/* Upsell Banner */}
+      <section className="px-4 pt-4 sm:px-6 lg:px-16">
+        <div className="mx-auto max-w-7xl">
+          <a
+            href="https://andersoncalisthenics.com/upsell-checkout/?utm_source=area&src=area"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block w-full overflow-hidden rounded-xl ring-1 ring-dark-border transition-transform hover:-translate-y-[1px] hover:ring-primary/60"
+            aria-label="Oferta especial — clique para conferir"
+          >
+            <div className="relative aspect-[2752/1536] w-full">
+              <Image
+                src="/images/Bannerupsell1.png"
+                alt="Oferta especial"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+              />
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Hero */}
       <section className="relative">
         <div className="relative aspect-[3/2] md:aspect-[16/9] xl:aspect-[21/9] w-full overflow-hidden bg-dark-bg">
